@@ -1,0 +1,37 @@
+<script src="/js/lineHolder.js"></script>
+<aside>
+  <p>filemanager</p>
+
+  <button class="button button4" onclick="">font-</button>
+  <button class="button button5">kolory</button>
+  <button class="button button6">font +</button>
+  <button class="button button7">zapisz ustawienia</button>
+  <button class="button button8">zmiana nazwy</button>
+  <button class="button button9">podgląd pliku</button>
+
+  <div id="nowaNazwaPliku">
+    <form action="/nowaNazwaPliku" method="post">
+      <input type="hidden" name="sciezka" value="{{sciezka}}" />
+      <input type="text" name="nazwa" id="nazwa" required />
+      <input type="submit" value="Submit" />
+    </form>
+  </div>
+
+</aside>
+
+<div id="container2">
+  <div class="lineNumbers">
+    <span></span>
+
+  </div>
+  <textarea
+    spellcheck="false"
+    name=""
+    id=""
+    cols="30"
+    rows="10"
+    wrap="off"
+    onscroll="lineHolder()"
+  >{{data}}</textarea>
+  <script src="/js/updateLines.js"></script>
+</div>

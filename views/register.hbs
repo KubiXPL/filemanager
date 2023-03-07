@@ -1,0 +1,48 @@
+<style>
+  main {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 2rem;
+  }
+  form {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 1rem;
+  }
+
+  .info {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 1rem;
+  }
+  .info > .links {
+	display: flex;
+	gap: 1rem;
+  }
+
+ a href {
+    background-color: black;
+ }
+
+</style>
+
+<div class="info">
+	<h1>cookie authentication</h1>
+	<div class="links">
+		<a href="/login">login</a>
+		<a href="/index">index</a>
+		<a href="/index2">index2</a>
+	</div>
+</div>
+
+<form action="/register" method="POST">
+  <input type="text" name="username" placeholder="Enter name" minlength="3" required />
+  <input type="password" name="password" placeholder="Enter pass" minlength="3" required />
+  <input type="password" name="confirmPassword" placeholder="Confirm pass" minlength="3" required />
+  <input type="submit" value="register" />
+</form>
+
+<h1> register page </h1>

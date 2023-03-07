@@ -1,0 +1,98 @@
+<script src="/js/nowyFolder.js"></script>
+<script src="/js/nowyPlik.js"></script>
+<script src="/js/nowaNazwaFolderu.js"></script>
+<script src="/js/uploadPliki.js"></script>
+
+<div id="folderForm">
+  <form action="/nowy_folder" method="post">
+    <input type="hidden" name="sciezka" value="{{sciezka}}" />
+    <input type="text" name="nazwa" id="nazwa" required/>
+    <input type="submit" value="Submit" />
+
+  </form>
+  <button onclick="hideFolder()">Cancel</button>
+</div>
+
+<div id="plikForm">
+  <form action="/nowy_plik" method="post">
+  <input type="hidden" name="sciezka" value="{{sciezka}}" />
+    <input type="text" name="nazwa" id="nazwa" required/>
+    <input type="submit" value="Submit" />
+
+  </form>
+  <button onclick="hidePlik()">Cancel</button>
+</div>
+
+{{#if sciezka}}
+
+<div id="nazwaFolderu">
+  <form action="/nowaNazwaFolderu" method="post">
+  <input type="hidden" name="sciezka" value="{{sciezka}}" />
+    <input type="text" name="nazwa" id="nazwa" required/>
+    <input type="submit" value="Submit" />
+
+  </form>
+  <button onclick="hideNazwaFolderu()">Cancel</button>
+</div>
+
+
+{{/if }}
+
+
+<aside>
+  <p>filemanager</p>
+
+  <button class="button button1" onclick="nowyFolder()">Nowy Folder</button>
+  <button class="button button2" onclick="nowyPlik()">Nowy Plik Tekstowy</button>
+  {{#if sciezka}}
+  <button class="button button3" onclick="nowaNazwaFolderu()">Zmiana nazwy Folderu</button>
+  {{/if }}
+
+
+  <form id="content" class="button button1" enctype="multipart/form-data" method="POST" action="/handleUpload" >
+    <div><img src="/gfx/upload.png" /></div>
+    <button id="wybierz" onclick="uploadPliki()" type="button">Wybierz Pliki</button>
+    {{!-- <form enctype="multipart/form-data" method="POST" action="/handleUpload" id="visibility"> --}}
+      <input type="hidden" name="sciezka" value="{{sciezka}}" />
+      <input multiple required="*" type="file" name="upload" id="upload" class="visibility"/>
+    {{!-- </form> --}}
+    <button id="ok" type="submit">OK</button>
+  </form>
+
+</aside>
+
+<div id="container">
+
+<div id="path">
+
+  <a href="/">home</a> /
+
+  {{#if sciezka}}
+
+ {{#each drozka}}
+  <a href="/?nazwa={{this}}">{{nazwaFolderu this}}</a> /
+ {{/each}}
+
+ {{/if}}
+</div>
+
+<div class="wszystko">
+  {{#each files}}
+
+    <div class="plik">
+      <img src="gfx/{{img}}" alt="" />
+      <a href="/{{editor name}}?nazwa={{../sciezka}}/{{name}}">{{name}}</a>
+      <a href="/delete?nazwa={{name}}&&typ=file&&sciezka={{../sciezka}}">usun</a>
+    </div>
+  {{/each}}
+
+  {{#each folders}}
+
+    <div class="folder">
+      <img src="gfx/{{img}}" alt="" />
+      <a href="/?nazwa={{../sciezka}}/{{name}}">{{name}}</a>
+      <a href="/delete?nazwa={{name}}&&typ=folder&&sciezka={{../sciezka}}">usun</a>
+    </div>
+  {{/each}}
+</div>
+</div>

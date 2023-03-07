@@ -1,0 +1,28 @@
+<script src="/js/graphicMenu.js"></script>
+
+<aside>
+  <p>filemanager</p>
+
+  <button class="button button10" onclick="graphicMenu()">filters</button>
+
+  <div id="nowaNazwaPliku">
+    <form action="/nowaNazwaPliku" method="post">
+      <input type="hidden" name="sciezka" value="{{sciezka}}" />
+    </form>
+  </div>
+
+</aside>
+
+<div id="container3" class="hide">
+{{#each filters}}
+
+<div class="filter" style="background-image: url({{../sciezka}}); filter: {{this}};"> </div>
+
+{{/each}}
+</div>
+
+<div>
+    <div class="display image" style="background-image: url({{sciezka}});" >
+
+    </div>
+</div>
